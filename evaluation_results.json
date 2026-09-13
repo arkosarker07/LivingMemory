@@ -1,0 +1,186 @@
+{
+  "metadata": {
+    "date": "2026-09-13T22:03:04.515428",
+    "model": "qwen2.5:7b",
+    "conversations": [
+      0,
+      1
+    ],
+    "dry_run": false,
+    "conditions_run": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "hours_per_session": 72
+  },
+  "conditions": {
+    "naive_rag": {
+      "f1_overall": 0.0469,
+      "f1_by_type": {
+        "multi_hop": 0.0035,
+        "open_domain": 0.0748,
+        "single_hop": 0.041,
+        "temporal": 0.059
+      },
+      "tokens_per_query": 340.6,
+      "memory_count_after_ingest": 394,
+      "total_queries": 233
+    },
+    "scoring_only": {
+      "f1_overall": 0.0534,
+      "f1_by_type": {
+        "multi_hop": 0.0084,
+        "open_domain": 0.0789,
+        "single_hop": 0.0535,
+        "temporal": 0.0791
+      },
+      "tokens_per_query": 266.1,
+      "memory_count_after_ingest": 218,
+      "total_queries": 233
+    },
+    "consolidation_only": {
+      "f1_overall": 0.0549,
+      "f1_by_type": {
+        "multi_hop": 0.0022,
+        "open_domain": 0.086,
+        "single_hop": 0.0534,
+        "temporal": 0.0755
+      },
+      "tokens_per_query": 239.2,
+      "memory_count_after_ingest": 382,
+      "total_queries": 233
+    },
+    "full_living_memory": {
+      "f1_overall": 0.0529,
+      "f1_by_type": {
+        "multi_hop": 0.0029,
+        "open_domain": 0.0809,
+        "single_hop": 0.0603,
+        "temporal": 0.0594
+      },
+      "tokens_per_query": 262.6,
+      "memory_count_after_ingest": 212,
+      "total_queries": 233
+    }
+  },
+  "per_conversation": [
+    {
+      "f1_overall": 0.0453,
+      "f1_by_type": {
+        "multi_hop": 0.007,
+        "temporal": 0.059,
+        "single_hop": 0.0141,
+        "open_domain": 0.0773
+      },
+      "total_tokens": 51969,
+      "tokens_per_query": 341.9,
+      "total_queries": 152,
+      "memory_count_after_ingest": 419,
+      "condition": "naive_rag",
+      "conv_idx": 0
+    },
+    {
+      "f1_overall": 0.0485,
+      "f1_by_type": {
+        "multi_hop": 0.0,
+        "open_domain": 0.0724,
+        "single_hop": 0.0678
+      },
+      "total_tokens": 27485,
+      "tokens_per_query": 339.3,
+      "total_queries": 81,
+      "memory_count_after_ingest": 369,
+      "condition": "naive_rag",
+      "conv_idx": 1
+    },
+    {
+      "f1_overall": 0.057,
+      "f1_by_type": {
+        "multi_hop": 0.0168,
+        "temporal": 0.0791,
+        "single_hop": 0.0353,
+        "open_domain": 0.0842
+      },
+      "total_tokens": 38833,
+      "tokens_per_query": 255.5,
+      "total_queries": 152,
+      "memory_count_after_ingest": 213,
+      "condition": "scoring_only",
+      "conv_idx": 0
+    },
+    {
+      "f1_overall": 0.0497,
+      "f1_by_type": {
+        "multi_hop": 0.0,
+        "open_domain": 0.0736,
+        "single_hop": 0.0717
+      },
+      "total_tokens": 22418,
+      "tokens_per_query": 276.8,
+      "total_queries": 81,
+      "memory_count_after_ingest": 222,
+      "condition": "scoring_only",
+      "conv_idx": 1
+    },
+    {
+      "f1_overall": 0.0522,
+      "f1_by_type": {
+        "multi_hop": 0.0045,
+        "temporal": 0.0755,
+        "single_hop": 0.0209,
+        "open_domain": 0.0875
+      },
+      "total_tokens": 36156,
+      "tokens_per_query": 237.9,
+      "total_queries": 152,
+      "memory_count_after_ingest": 411,
+      "condition": "consolidation_only",
+      "conv_idx": 0
+    },
+    {
+      "f1_overall": 0.0576,
+      "f1_by_type": {
+        "multi_hop": 0.0,
+        "open_domain": 0.0846,
+        "single_hop": 0.0858
+      },
+      "total_tokens": 19491,
+      "tokens_per_query": 240.6,
+      "total_queries": 81,
+      "memory_count_after_ingest": 352,
+      "condition": "consolidation_only",
+      "conv_idx": 1
+    },
+    {
+      "f1_overall": 0.0519,
+      "f1_by_type": {
+        "multi_hop": 0.0059,
+        "temporal": 0.0594,
+        "single_hop": 0.0286,
+        "open_domain": 0.0855
+      },
+      "total_tokens": 39870,
+      "tokens_per_query": 262.3,
+      "total_queries": 152,
+      "memory_count_after_ingest": 206,
+      "condition": "full_living_memory",
+      "conv_idx": 0
+    },
+    {
+      "f1_overall": 0.0539,
+      "f1_by_type": {
+        "multi_hop": 0.0,
+        "open_domain": 0.0763,
+        "single_hop": 0.092
+      },
+      "total_tokens": 21302,
+      "tokens_per_query": 263.0,
+      "total_queries": 81,
+      "memory_count_after_ingest": 217,
+      "condition": "full_living_memory",
+      "conv_idx": 1
+    }
+  ]
+}
