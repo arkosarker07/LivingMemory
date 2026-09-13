@@ -26,7 +26,7 @@ from middleware.memory_schema import MemoryObject
 
 load_dotenv()
 
-OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen2.5-coder:7b")
+OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen2.5:7b")
 llm_client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
 
 # ── Local embeddings (must match write path) ──────────────────────────────────

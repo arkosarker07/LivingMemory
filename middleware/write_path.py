@@ -26,7 +26,7 @@ from middleware.memory_schema import MemoryObject
 load_dotenv()
 
 # ── OpenAI client (used for Job 3 LLM evaluation pointing to Ollama) ──────────
-OLLAMA_MODEL  = os.getenv("OLLAMA_MODEL", "qwen2.5-coder:7b")
+OLLAMA_MODEL  = os.getenv("OLLAMA_MODEL", "qwen2.5:7b")
 llm_client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
 
 # ── Local embedding function (no API cost, runs on your machine) ──────────────
