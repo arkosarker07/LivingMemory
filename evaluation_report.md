@@ -1,6 +1,6 @@
 # Living Memory — LoCoMo Evaluation Results
 
-**Date:** 2026-09-13T22:55:27.052748
+**Date:** 2026-09-18T15:26:10.961295
 **Model:** `qwen2.5:7b`
 **Conversations evaluated:** [0, 1]
 **Total QA pairs:** 233
@@ -12,10 +12,10 @@
 
 | Condition | F1 Overall | Tokens/Query | DB Size (active) |
 |---|---|---|---|
-| Naive RAG (Baseline) | **0.0469** | 341 | 394 |
-| Scoring Only | **0.0534** | 266 | 218 |
-| Consolidation Only | **0.0549** | 239 | 382 |
-| Full Living Memory | **0.0529** | 263 | 212 |
+| Naive RAG (Baseline) | **0.0462** | 338 | 394 |
+| Scoring Only | **0.0499** | 266 | 218 |
+| Consolidation Only | **0.0549** | 241 | 382 |
+| Full Living Memory | **0.0536** | 277 | 215 |
 
 ---
 
@@ -23,26 +23,26 @@
 
 | Condition | Multi Hop | Open Domain | Single Hop | Temporal |
 |---|---|---|---|---|
-| Naive RAG (Baseline) | 0.0035 | 0.0748 | 0.0410 | 0.0590 |
-| Scoring Only | 0.0084 | 0.0789 | 0.0535 | 0.0791 |
-| Consolidation Only | 0.0022 | 0.0860 | 0.0534 | 0.0755 |
-| Full Living Memory | 0.0029 | 0.0809 | 0.0603 | 0.0594 |
+| Naive RAG (Baseline) | 0.0019 | 0.0740 | 0.0408 | 0.0631 |
+| Scoring Only | 0.0051 | 0.0764 | 0.0472 | 0.0693 |
+| Consolidation Only | 0.0037 | 0.0819 | 0.0599 | 0.0878 |
+| Full Living Memory | 0.0032 | 0.0864 | 0.0405 | 0.0824 |
 
 ---
 
 ## Token Efficiency
 
-Full Living Memory uses **+22.9%** fewer tokens per query compared to Naive RAG.
-- Naive RAG: 341 tokens/query
-- Full Living Memory: 263 tokens/query
+Full Living Memory uses **+18.2%** fewer tokens per query compared to Naive RAG.
+- Naive RAG: 338 tokens/query
+- Full Living Memory: 277 tokens/query
 
 ---
 
 ## Memory Compression
 
-Full Living Memory stores **+46.2%** fewer active memories compared to Naive RAG.
+Full Living Memory stores **+45.4%** fewer active memories compared to Naive RAG.
 - Naive RAG: 394 memories
-- Full Living Memory: 212 memories
+- Full Living Memory: 215 memories
 
 ---
 
