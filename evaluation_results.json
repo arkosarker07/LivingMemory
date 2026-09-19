@@ -17,78 +17,78 @@
   },
   "conditions": {
     "naive_rag": {
-      "f1_overall": 0.0462,
+      "f1_overall": 0.0575,
       "f1_by_type": {
-        "multi_hop": 0.0019,
-        "open_domain": 0.074,
-        "single_hop": 0.0408,
-        "temporal": 0.0631
+        "multi_hop": 0.0148,
+        "open_domain": 0.0768,
+        "single_hop": 0.0536,
+        "temporal": 0.0504
       },
-      "tokens_per_query": 338.5,
-      "memory_count_after_ingest": 394,
-      "total_queries": 233
+      "tokens_per_query": 341.3,
+      "memory_count_after_ingest": 588,
+      "total_queries": 1540
     },
     "scoring_only": {
-      "f1_overall": 0.0499,
+      "f1_overall": 0.0524,
       "f1_by_type": {
-        "multi_hop": 0.0051,
-        "open_domain": 0.0764,
-        "single_hop": 0.0472,
-        "temporal": 0.0693
+        "multi_hop": 0.0118,
+        "open_domain": 0.0651,
+        "single_hop": 0.0581,
+        "temporal": 0.0622
       },
-      "tokens_per_query": 266.5,
-      "memory_count_after_ingest": 218,
-      "total_queries": 233
+      "tokens_per_query": 280.6,
+      "memory_count_after_ingest": 276,
+      "total_queries": 1540
     },
     "consolidation_only": {
-      "f1_overall": 0.0549,
+      "f1_overall": 0.0527,
       "f1_by_type": {
-        "multi_hop": 0.0037,
-        "open_domain": 0.0819,
-        "single_hop": 0.0599,
-        "temporal": 0.0878
+        "multi_hop": 0.0087,
+        "open_domain": 0.0672,
+        "single_hop": 0.06,
+        "temporal": 0.0605
       },
-      "tokens_per_query": 241.2,
-      "memory_count_after_ingest": 382,
-      "total_queries": 233
+      "tokens_per_query": 239.2,
+      "memory_count_after_ingest": 572,
+      "total_queries": 1540
     },
     "full_living_memory": {
-      "f1_overall": 0.0536,
+      "f1_overall": 0.0537,
       "f1_by_type": {
-        "multi_hop": 0.0032,
-        "open_domain": 0.0864,
-        "single_hop": 0.0405,
-        "temporal": 0.0824
+        "multi_hop": 0.0118,
+        "open_domain": 0.0677,
+        "single_hop": 0.0576,
+        "temporal": 0.0628
       },
-      "tokens_per_query": 276.8,
-      "memory_count_after_ingest": 215,
-      "total_queries": 233
+      "tokens_per_query": 278.3,
+      "memory_count_after_ingest": 271,
+      "total_queries": 1540
     }
   },
   "per_conversation": [
     {
-      "f1_overall": 0.0448,
+      "f1_overall": 0.0461,
       "f1_by_type": {
-        "multi_hop": 0.0039,
-        "temporal": 0.0631,
-        "single_hop": 0.0137,
-        "open_domain": 0.0772
+        "multi_hop": 0.0068,
+        "temporal": 0.0532,
+        "single_hop": 0.0143,
+        "open_domain": 0.08
       },
-      "total_tokens": 51836,
-      "tokens_per_query": 341.0,
+      "total_tokens": 51807,
+      "tokens_per_query": 340.8,
       "total_queries": 152,
       "memory_count_after_ingest": 419,
       "condition": "naive_rag",
       "conv_idx": 0
     },
     {
-      "f1_overall": 0.0476,
+      "f1_overall": 0.051,
       "f1_by_type": {
         "multi_hop": 0.0,
-        "open_domain": 0.0707,
-        "single_hop": 0.0678
+        "open_domain": 0.0756,
+        "single_hop": 0.0736
       },
-      "total_tokens": 27217,
+      "total_tokens": 27216,
       "tokens_per_query": 336.0,
       "total_queries": 81,
       "memory_count_after_ingest": 369,
@@ -96,91 +96,571 @@
       "conv_idx": 1
     },
     {
-      "f1_overall": 0.0475,
+      "f1_overall": 0.0482,
       "f1_by_type": {
-        "multi_hop": 0.0102,
-        "temporal": 0.0693,
-        "single_hop": 0.0233,
-        "open_domain": 0.0743
+        "multi_hop": 0.0151,
+        "temporal": 0.0649,
+        "single_hop": 0.0293,
+        "open_domain": 0.0713
       },
-      "total_tokens": 40946,
-      "tokens_per_query": 269.4,
+      "total_tokens": 39739,
+      "tokens_per_query": 261.4,
       "total_queries": 152,
-      "memory_count_after_ingest": 218,
+      "memory_count_after_ingest": 222,
       "condition": "scoring_only",
       "conv_idx": 0
     },
     {
-      "f1_overall": 0.0523,
+      "f1_overall": 0.056,
       "f1_by_type": {
         "multi_hop": 0.0,
-        "open_domain": 0.0785,
-        "single_hop": 0.0711
+        "open_domain": 0.082,
+        "single_hop": 0.0845
       },
-      "total_tokens": 21352,
-      "tokens_per_query": 263.6,
+      "total_tokens": 21364,
+      "tokens_per_query": 263.8,
       "total_queries": 81,
-      "memory_count_after_ingest": 219,
+      "memory_count_after_ingest": 229,
       "condition": "scoring_only",
       "conv_idx": 1
     },
     {
-      "f1_overall": 0.0493,
+      "f1_overall": 0.0501,
       "f1_by_type": {
-        "multi_hop": 0.0073,
-        "temporal": 0.0878,
-        "single_hop": 0.0212,
-        "open_domain": 0.0771
+        "multi_hop": 0.004,
+        "temporal": 0.071,
+        "single_hop": 0.0233,
+        "open_domain": 0.0827
       },
-      "total_tokens": 36625,
-      "tokens_per_query": 241.0,
+      "total_tokens": 35280,
+      "tokens_per_query": 232.1,
       "total_queries": 152,
       "memory_count_after_ingest": 411,
       "condition": "consolidation_only",
       "conv_idx": 0
     },
     {
-      "f1_overall": 0.0605,
+      "f1_overall": 0.0642,
       "f1_by_type": {
         "multi_hop": 0.0,
-        "open_domain": 0.0868,
-        "single_hop": 0.0986
+        "open_domain": 0.0967,
+        "single_hop": 0.0859
       },
-      "total_tokens": 19561,
-      "tokens_per_query": 241.5,
+      "total_tokens": 19416,
+      "tokens_per_query": 239.7,
       "total_queries": 81,
       "memory_count_after_ingest": 352,
       "condition": "consolidation_only",
       "conv_idx": 1
     },
     {
-      "f1_overall": 0.052,
+      "f1_overall": 0.0653,
       "f1_by_type": {
-        "multi_hop": 0.0065,
-        "temporal": 0.0824,
-        "single_hop": 0.0134,
-        "open_domain": 0.088
+        "multi_hop": 0.0168,
+        "temporal": 0.0818,
+        "single_hop": 0.0442,
+        "open_domain": 0.0975
       },
-      "total_tokens": 43981,
-      "tokens_per_query": 289.3,
+      "total_tokens": 41468,
+      "tokens_per_query": 272.8,
       "total_queries": 152,
-      "memory_count_after_ingest": 213,
+      "memory_count_after_ingest": 204,
       "condition": "full_living_memory",
       "conv_idx": 0
     },
     {
-      "f1_overall": 0.0552,
+      "f1_overall": 0.0537,
       "f1_by_type": {
         "multi_hop": 0.0,
-        "open_domain": 0.0848,
-        "single_hop": 0.0676
+        "open_domain": 0.078,
+        "single_hop": 0.0837
       },
-      "total_tokens": 21397,
-      "tokens_per_query": 264.2,
+      "total_tokens": 21449,
+      "tokens_per_query": 264.8,
       "total_queries": 81,
-      "memory_count_after_ingest": 217,
+      "memory_count_after_ingest": 213,
       "condition": "full_living_memory",
       "conv_idx": 1
+    },
+    {
+      "f1_overall": 0.0486,
+      "f1_by_type": {
+        "multi_hop": 0.0131,
+        "single_hop": 0.0171,
+        "temporal": 0.0219,
+        "open_domain": 0.0737
+      },
+      "total_tokens": 51081,
+      "tokens_per_query": 336.1,
+      "total_queries": 152,
+      "memory_count_after_ingest": 663,
+      "condition": "naive_rag",
+      "conv_idx": 2
+    },
+    {
+      "f1_overall": 0.0473,
+      "f1_by_type": {
+        "temporal": 0.0371,
+        "single_hop": 0.0247,
+        "multi_hop": 0.0083,
+        "open_domain": 0.0699
+      },
+      "total_tokens": 63998,
+      "tokens_per_query": 321.6,
+      "total_queries": 199,
+      "memory_count_after_ingest": 629,
+      "condition": "naive_rag",
+      "conv_idx": 3
+    },
+    {
+      "f1_overall": 0.0824,
+      "f1_by_type": {
+        "single_hop": 0.0843,
+        "temporal": 0.0643,
+        "multi_hop": 0.0064,
+        "open_domain": 0.1027
+      },
+      "total_tokens": 62318,
+      "tokens_per_query": 350.1,
+      "total_queries": 178,
+      "memory_count_after_ingest": 680,
+      "condition": "naive_rag",
+      "conv_idx": 4
+    },
+    {
+      "f1_overall": 0.0688,
+      "f1_by_type": {
+        "multi_hop": 0.0322,
+        "single_hop": 0.067,
+        "temporal": 0.0482,
+        "open_domain": 0.0862
+      },
+      "total_tokens": 46925,
+      "tokens_per_query": 381.5,
+      "total_queries": 123,
+      "memory_count_after_ingest": 675,
+      "condition": "naive_rag",
+      "conv_idx": 5
+    },
+    {
+      "f1_overall": 0.0567,
+      "f1_by_type": {
+        "temporal": 0.0337,
+        "multi_hop": 0.0156,
+        "single_hop": 0.08,
+        "open_domain": 0.0715
+      },
+      "total_tokens": 47715,
+      "tokens_per_query": 318.1,
+      "total_queries": 150,
+      "memory_count_after_ingest": 689,
+      "condition": "naive_rag",
+      "conv_idx": 6
+    },
+    {
+      "f1_overall": 0.0712,
+      "f1_by_type": {
+        "multi_hop": 0.0363,
+        "single_hop": 0.0638,
+        "temporal": 0.0581,
+        "open_domain": 0.0861
+      },
+      "total_tokens": 66061,
+      "tokens_per_query": 345.9,
+      "total_queries": 191,
+      "memory_count_after_ingest": 681,
+      "condition": "naive_rag",
+      "conv_idx": 7
+    },
+    {
+      "f1_overall": 0.0614,
+      "f1_by_type": {
+        "single_hop": 0.0693,
+        "multi_hop": 0.0176,
+        "temporal": 0.1087,
+        "open_domain": 0.0688
+      },
+      "total_tokens": 52217,
+      "tokens_per_query": 334.7,
+      "total_queries": 156,
+      "memory_count_after_ingest": 509,
+      "condition": "naive_rag",
+      "conv_idx": 8
+    },
+    {
+      "f1_overall": 0.0413,
+      "f1_by_type": {
+        "multi_hop": 0.0119,
+        "single_hop": 0.0414,
+        "temporal": 0.0284,
+        "open_domain": 0.0532
+      },
+      "total_tokens": 54959,
+      "tokens_per_query": 347.8,
+      "total_queries": 158,
+      "memory_count_after_ingest": 568,
+      "condition": "naive_rag",
+      "conv_idx": 9
+    },
+    {
+      "f1_overall": 0.0509,
+      "f1_by_type": {
+        "multi_hop": 0.015,
+        "single_hop": 0.0318,
+        "temporal": 0.0089,
+        "open_domain": 0.073
+      },
+      "total_tokens": 39482,
+      "tokens_per_query": 259.8,
+      "total_queries": 152,
+      "memory_count_after_ingest": 366,
+      "condition": "scoring_only",
+      "conv_idx": 2
+    },
+    {
+      "f1_overall": 0.0517,
+      "f1_by_type": {
+        "temporal": 0.0669,
+        "single_hop": 0.0434,
+        "multi_hop": 0.0083,
+        "open_domain": 0.0685
+      },
+      "total_tokens": 62020,
+      "tokens_per_query": 311.7,
+      "total_queries": 199,
+      "memory_count_after_ingest": 236,
+      "condition": "scoring_only",
+      "conv_idx": 3
+    },
+    {
+      "f1_overall": 0.0687,
+      "f1_by_type": {
+        "single_hop": 0.0905,
+        "temporal": 0.0618,
+        "multi_hop": 0.0095,
+        "open_domain": 0.0776
+      },
+      "total_tokens": 51699,
+      "tokens_per_query": 290.4,
+      "total_queries": 178,
+      "memory_count_after_ingest": 295,
+      "condition": "scoring_only",
+      "conv_idx": 4
+    },
+    {
+      "f1_overall": 0.0657,
+      "f1_by_type": {
+        "multi_hop": 0.026,
+        "single_hop": 0.0805,
+        "temporal": 0.095,
+        "open_domain": 0.0706
+      },
+      "total_tokens": 35707,
+      "tokens_per_query": 290.3,
+      "total_queries": 123,
+      "memory_count_after_ingest": 299,
+      "condition": "scoring_only",
+      "conv_idx": 5
+    },
+    {
+      "f1_overall": 0.0515,
+      "f1_by_type": {
+        "temporal": 0.0439,
+        "multi_hop": 0.0129,
+        "single_hop": 0.0564,
+        "open_domain": 0.0673
+      },
+      "total_tokens": 41751,
+      "tokens_per_query": 278.3,
+      "total_queries": 150,
+      "memory_count_after_ingest": 312,
+      "condition": "scoring_only",
+      "conv_idx": 6
+    },
+    {
+      "f1_overall": 0.0487,
+      "f1_by_type": {
+        "multi_hop": 0.0129,
+        "single_hop": 0.059,
+        "temporal": 0.0163,
+        "open_domain": 0.0623
+      },
+      "total_tokens": 58183,
+      "tokens_per_query": 304.6,
+      "total_queries": 191,
+      "memory_count_after_ingest": 302,
+      "condition": "scoring_only",
+      "conv_idx": 7
+    },
+    {
+      "f1_overall": 0.0444,
+      "f1_by_type": {
+        "single_hop": 0.0644,
+        "multi_hop": 0.0065,
+        "temporal": 0.1488,
+        "open_domain": 0.0327
+      },
+      "total_tokens": 38701,
+      "tokens_per_query": 248.1,
+      "total_queries": 156,
+      "memory_count_after_ingest": 235,
+      "condition": "scoring_only",
+      "conv_idx": 8
+    },
+    {
+      "f1_overall": 0.0383,
+      "f1_by_type": {
+        "multi_hop": 0.0113,
+        "single_hop": 0.0416,
+        "temporal": 0.0529,
+        "open_domain": 0.0457
+      },
+      "total_tokens": 47034,
+      "tokens_per_query": 297.7,
+      "total_queries": 158,
+      "memory_count_after_ingest": 259,
+      "condition": "scoring_only",
+      "conv_idx": 9
+    },
+    {
+      "f1_overall": 0.0479,
+      "f1_by_type": {
+        "multi_hop": 0.0086,
+        "single_hop": 0.0204,
+        "temporal": 0.0223,
+        "open_domain": 0.0725
+      },
+      "total_tokens": 34732,
+      "tokens_per_query": 228.5,
+      "total_queries": 152,
+      "memory_count_after_ingest": 650,
+      "condition": "consolidation_only",
+      "conv_idx": 2
+    },
+    {
+      "f1_overall": 0.0482,
+      "f1_by_type": {
+        "temporal": 0.0546,
+        "single_hop": 0.0335,
+        "multi_hop": 0.0044,
+        "open_domain": 0.0683
+      },
+      "total_tokens": 44568,
+      "tokens_per_query": 224.0,
+      "total_queries": 199,
+      "memory_count_after_ingest": 578,
+      "condition": "consolidation_only",
+      "conv_idx": 3
+    },
+    {
+      "f1_overall": 0.0594,
+      "f1_by_type": {
+        "single_hop": 0.0851,
+        "temporal": 0.0643,
+        "multi_hop": 0.0118,
+        "open_domain": 0.0629
+      },
+      "total_tokens": 43282,
+      "tokens_per_query": 243.2,
+      "total_queries": 178,
+      "memory_count_after_ingest": 676,
+      "condition": "consolidation_only",
+      "conv_idx": 4
+    },
+    {
+      "f1_overall": 0.0721,
+      "f1_by_type": {
+        "multi_hop": 0.0169,
+        "single_hop": 0.0907,
+        "temporal": 0.0696,
+        "open_domain": 0.0848
+      },
+      "total_tokens": 32890,
+      "tokens_per_query": 267.4,
+      "total_queries": 123,
+      "memory_count_after_ingest": 661,
+      "condition": "consolidation_only",
+      "conv_idx": 5
+    },
+    {
+      "f1_overall": 0.0458,
+      "f1_by_type": {
+        "temporal": 0.0403,
+        "multi_hop": 0.0189,
+        "single_hop": 0.094,
+        "open_domain": 0.046
+      },
+      "total_tokens": 35325,
+      "tokens_per_query": 235.5,
+      "total_queries": 150,
+      "memory_count_after_ingest": 683,
+      "condition": "consolidation_only",
+      "conv_idx": 6
+    },
+    {
+      "f1_overall": 0.0382,
+      "f1_by_type": {
+        "multi_hop": 0.0096,
+        "single_hop": 0.0464,
+        "temporal": 0.0164,
+        "open_domain": 0.0488
+      },
+      "total_tokens": 46419,
+      "tokens_per_query": 243.0,
+      "total_queries": 191,
+      "memory_count_after_ingest": 671,
+      "condition": "consolidation_only",
+      "conv_idx": 7
+    },
+    {
+      "f1_overall": 0.054,
+      "f1_by_type": {
+        "single_hop": 0.0723,
+        "multi_hop": 0.0091,
+        "temporal": 0.1599,
+        "open_domain": 0.0463
+      },
+      "total_tokens": 35667,
+      "tokens_per_query": 228.6,
+      "total_queries": 156,
+      "memory_count_after_ingest": 497,
+      "condition": "consolidation_only",
+      "conv_idx": 8
+    },
+    {
+      "f1_overall": 0.0475,
+      "f1_by_type": {
+        "multi_hop": 0.0041,
+        "single_hop": 0.0482,
+        "temporal": 0.0458,
+        "open_domain": 0.0634
+      },
+      "total_tokens": 39446,
+      "tokens_per_query": 249.7,
+      "total_queries": 158,
+      "memory_count_after_ingest": 543,
+      "condition": "consolidation_only",
+      "conv_idx": 9
+    },
+    {
+      "f1_overall": 0.0503,
+      "f1_by_type": {
+        "multi_hop": 0.0158,
+        "single_hop": 0.0318,
+        "temporal": 0.0104,
+        "open_domain": 0.0714
+      },
+      "total_tokens": 39540,
+      "tokens_per_query": 260.1,
+      "total_queries": 152,
+      "memory_count_after_ingest": 357,
+      "condition": "full_living_memory",
+      "conv_idx": 2
+    },
+    {
+      "f1_overall": 0.0466,
+      "f1_by_type": {
+        "temporal": 0.0462,
+        "single_hop": 0.025,
+        "multi_hop": 0.0115,
+        "open_domain": 0.0664
+      },
+      "total_tokens": 58271,
+      "tokens_per_query": 292.8,
+      "total_queries": 199,
+      "memory_count_after_ingest": 244,
+      "condition": "full_living_memory",
+      "conv_idx": 3
+    },
+    {
+      "f1_overall": 0.0711,
+      "f1_by_type": {
+        "single_hop": 0.0876,
+        "temporal": 0.079,
+        "multi_hop": 0.0023,
+        "open_domain": 0.0821
+      },
+      "total_tokens": 50199,
+      "tokens_per_query": 282.0,
+      "total_queries": 178,
+      "memory_count_after_ingest": 286,
+      "condition": "full_living_memory",
+      "conv_idx": 4
+    },
+    {
+      "f1_overall": 0.0607,
+      "f1_by_type": {
+        "multi_hop": 0.0259,
+        "single_hop": 0.0726,
+        "temporal": 0.0705,
+        "open_domain": 0.0673
+      },
+      "total_tokens": 37790,
+      "tokens_per_query": 307.2,
+      "total_queries": 123,
+      "memory_count_after_ingest": 298,
+      "condition": "full_living_memory",
+      "conv_idx": 5
+    },
+    {
+      "f1_overall": 0.0546,
+      "f1_by_type": {
+        "temporal": 0.0363,
+        "multi_hop": 0.0223,
+        "single_hop": 0.0694,
+        "open_domain": 0.0672
+      },
+      "total_tokens": 41738,
+      "tokens_per_query": 278.3,
+      "total_queries": 150,
+      "memory_count_after_ingest": 318,
+      "condition": "full_living_memory",
+      "conv_idx": 6
+    },
+    {
+      "f1_overall": 0.0438,
+      "f1_by_type": {
+        "multi_hop": 0.0114,
+        "single_hop": 0.049,
+        "temporal": 0.0087,
+        "open_domain": 0.0574
+      },
+      "total_tokens": 55196,
+      "tokens_per_query": 289.0,
+      "total_queries": 191,
+      "memory_count_after_ingest": 312,
+      "condition": "full_living_memory",
+      "conv_idx": 7
+    },
+    {
+      "f1_overall": 0.0503,
+      "f1_by_type": {
+        "single_hop": 0.0669,
+        "multi_hop": 0.0066,
+        "temporal": 0.1738,
+        "open_domain": 0.0397
+      },
+      "total_tokens": 38993,
+      "tokens_per_query": 250.0,
+      "total_queries": 156,
+      "memory_count_after_ingest": 237,
+      "condition": "full_living_memory",
+      "conv_idx": 8
+    },
+    {
+      "f1_overall": 0.0407,
+      "f1_by_type": {
+        "multi_hop": 0.0059,
+        "single_hop": 0.046,
+        "temporal": 0.0587,
+        "open_domain": 0.0502
+      },
+      "total_tokens": 45245,
+      "tokens_per_query": 286.4,
+      "total_queries": 158,
+      "memory_count_after_ingest": 244,
+      "condition": "full_living_memory",
+      "conv_idx": 9
     }
   ]
 }
