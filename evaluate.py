@@ -69,7 +69,7 @@ load_dotenv()
 # CONFIG — edit these to change evaluation parameters
 # ══════════════════════════════════════════════════════════════════════════════
 
-CONVERSATION_INDICES  = [0, 1]       # which LoCoMo conversations to evaluate
+CONVERSATION_INDICES  = [0,1,2,3,4,5,6,7,8,9]       # which LoCoMo conversations to evaluate
 HOURS_PER_SESSION     = 72            # simulated hours between sessions (3 days)
 QUERY_DELAY_SECONDS   = 2.5           # pause between Groq API calls (free tier)
 MAX_RETRY_WAIT        = 600.0         # allow up to 10 mins wait for extreme rate limits
