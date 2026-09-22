@@ -67,7 +67,7 @@ collection = chroma_client.get_or_create_collection(
 MATH_FILTER_THRESHOLD   = 0.35   # minimum math score to pass to LLM
 COLLISION_HIGH          = 0.75   # above this → send to LLM regardless of math
 EXACT_DUPLICATE_CUTOFF  = 0.98   # above this → obvious duplicate, discard immediately
-LLM_IMPORTANCE_CUTOFF   = 4      # LLM score below this → discard
+LLM_IMPORTANCE_CUTOFF   = 5     # LLM score below this → discard
 ALPHA                   = 0.4    # weight for semantic density
 BETA                    = 0.6    # weight for novelty  (alpha + beta must = 1.0)
 DENSITY_WINDOW          = 5      # how many recent memories to use for density calc
