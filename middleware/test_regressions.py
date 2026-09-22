@@ -73,7 +73,7 @@ class MiddlewareRegressionTests(unittest.TestCase):
             )]
         )
         client = SimpleNamespace(chat=SimpleNamespace(completions=SimpleNamespace(create=lambda **kwargs: response)))
-        with patch.object(write_path, "groq_client", client):
+        with patch.object(write_path, "llm_client", client):
             result = write_path.job3_llm_evaluate("fact", [])
 
         self.assertEqual(result["importance"], 5)

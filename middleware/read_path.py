@@ -16,9 +16,10 @@ Where:
 
 import os
 import math
+import time
 from datetime import datetime, timedelta, timezone
 from dotenv import load_dotenv
-from openai import OpenAI
+from openai import OpenAI, RateLimitError
 import chromadb
 from chromadb.utils import embedding_functions
 
@@ -26,8 +27,31 @@ from middleware.memory_schema import MemoryObject
 
 load_dotenv()
 
-OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen2.5:7b")
-llm_client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
+GROQ_MODEL  = os.getenv("GROQ_MODEL", "qwen-3.6-27b")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
+llm_client = OpenAI(
+    base_url="https://api.groq.com/openai/v1",
+    api_key=GROQ_API_KEY,
+)
+
+
+def _groq_call(fn, *args, retries: int = 4, **kwargs):
+    """
+    Thin retry wrapper around any llm_client.chat.completions.create call.
+    Handles Groq rate-limit (429) with exponential back-off so a normal
+    user never sees a crash — just a brief pause.
+    """
+    delay = 2.0
+    for attempt in range(retries):
+        try:
+            return fn(*args, **kwargs)
+        except RateLimitError:
+            if attempt == retries - 1:
+                raise
+            print(f"  [Groq] Rate limit hit — retrying in {delay:.0f}s "
+                  f"(attempt {attempt + 1}/{retries})")
+            time.sleep(delay)
+            delay *= 2   # 2 → 4 → 8 → 16 seconds
 
 # ── Local embeddings (must match write path) ──────────────────────────────────
 embed_fn = embedding_functions.DefaultEmbeddingFunction()
@@ -190,11 +214,12 @@ def chat(user_message: str, session_id: str, session_history: list[dict], simula
     messages.extend(session_history)
     messages.append({"role": "user", "content": user_message})
 
-    response = llm_client.chat.completions.create(
-        model=OLLAMA_MODEL,
+    response = _groq_call(
+        llm_client.chat.completions.create,
+        model=GROQ_MODEL,
         messages=messages,
         temperature=0.7,
-        max_tokens=500
+        max_tokens=512,        # keeps responses snappy and within free-tier TPM
     )
 
     return response.choices[0].message.content, retrieved

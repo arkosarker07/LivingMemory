@@ -14,10 +14,11 @@ This is your core thesis contribution for Phase 3.
 
 import os
 import json
+import time
 import numpy as np
 from datetime import datetime
 from dotenv import load_dotenv
-from openai import OpenAI
+from openai import OpenAI, RateLimitError
 import chromadb
 from chromadb.utils import embedding_functions
 
@@ -25,9 +26,31 @@ from middleware.memory_schema import MemoryObject
 
 load_dotenv()
 
-# ── OpenAI client (used for Job 3 LLM evaluation pointing to Ollama) ──────────
-OLLAMA_MODEL  = os.getenv("OLLAMA_MODEL", "qwen2.5:7b")
-llm_client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
+# ── Groq cloud client — qwen-3.6-27b via Groq API ────────────────────────────
+GROQ_MODEL   = os.getenv("GROQ_MODEL", "qwen-3.6-27b")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
+llm_client = OpenAI(
+    base_url="https://api.groq.com/openai/v1",
+    api_key=GROQ_API_KEY,
+)
+
+
+def _groq_call(fn, *args, retries: int = 4, **kwargs):
+    """
+    Retry wrapper with exponential back-off for Groq rate-limit (429) errors.
+    Normal users on the free tier won't see a crash — just a short pause.
+    """
+    delay = 2.0
+    for attempt in range(retries):
+        try:
+            return fn(*args, **kwargs)
+        except RateLimitError:
+            if attempt == retries - 1:
+                raise
+            print(f"  [Groq] Rate limit hit — retrying in {delay:.0f}s "
+                  f"(attempt {attempt + 1}/{retries})")
+            time.sleep(delay)
+            delay *= 2   # 2 → 4 → 8 → 16 seconds
 
 # ── Local embedding function (no API cost, runs on your machine) ──────────────
 embed_fn = embedding_functions.DefaultEmbeddingFunction()
@@ -278,12 +301,12 @@ RULES:
 - contradicts_id: the FULL id of the memory being contradicted, or null
 """
 
-    response = llm_client.chat.completions.create(
-        model=OLLAMA_MODEL,
+    response = _groq_call(
+        llm_client.chat.completions.create,
+        model=GROQ_MODEL,
         messages=[{"role": "user", "content": prompt}],
-        temperature=0.1,                           # low = consistent output
-        max_tokens=500,
-        response_format={"type": "json_object"}    # Ollama natively supports JSON mode
+        temperature=0.1,          # low = consistent output
+        max_tokens=300,           # JSON response is short; cap keeps it fast
     )
 
     raw = response.choices[0].message.content.strip()

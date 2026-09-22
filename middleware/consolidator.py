@@ -34,10 +34,11 @@ access_count inheritance rule — MAX not SUM:
 
 import os
 import json
+import time
 import numpy as np
 from datetime import datetime
 from dotenv import load_dotenv
-from openai import OpenAI
+from openai import OpenAI, RateLimitError
 import chromadb
 from chromadb.utils import embedding_functions
 from sklearn.metrics.pairwise import cosine_similarity
@@ -47,9 +48,31 @@ from middleware.memory_schema import MemoryObject
 
 load_dotenv()
 
-# ── OpenAI client (pointing to Ollama) ─────────────────────────────────────────
-OLLAMA_MODEL  = os.getenv("OLLAMA_MODEL", "qwen2.5:7b")
-llm_client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
+# ── Groq cloud client — qwen-3.6-27b via Groq API ──────────────────────────
+GROQ_MODEL   = os.getenv("GROQ_MODEL", "qwen-3.6-27b")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
+llm_client = OpenAI(
+    base_url="https://api.groq.com/openai/v1",
+    api_key=GROQ_API_KEY,
+)
+
+
+def _groq_call(fn, *args, retries: int = 4, **kwargs):
+    """
+    Retry wrapper with exponential back-off for Groq rate-limit (429) errors.
+    Consolidation runs in a background thread, so brief pauses are fine.
+    """
+    delay = 2.0
+    for attempt in range(retries):
+        try:
+            return fn(*args, **kwargs)
+        except RateLimitError:
+            if attempt == retries - 1:
+                raise
+            print(f"  [Groq] Rate limit hit — retrying in {delay:.0f}s "
+                  f"(attempt {attempt + 1}/{retries})")
+            time.sleep(delay)
+            delay *= 2   # 2 → 4 → 8 → 16 seconds
 
 # ── ChromaDB — same collection as write and read paths ────────────────────────
 embed_fn     = embedding_functions.DefaultEmbeddingFunction()
@@ -223,11 +246,12 @@ MEMORY FRAGMENTS:
 Respond with ONLY the consolidated memory text. No preamble, no explanation."""
 
     try:
-        response = llm_client.chat.completions.create(
-            model=OLLAMA_MODEL,
+        response = _groq_call(
+            llm_client.chat.completions.create,
+            model=GROQ_MODEL,
             messages=[{"role": "user", "content": prompt}],
             temperature=0.1,    # low temperature = factual, consistent output
-            max_tokens=300
+            max_tokens=200,     # 2 sentences max — no need for more
         )
         result = response.choices[0].message.content.strip()
 
@@ -373,7 +397,7 @@ def run_consolidator() -> dict:
 
     print(f"\n{'='*50}")
     print(f"[Consolidator] Starting consolidation run...")
-    print(f"[Consolidator] Model: {OLLAMA_MODEL}")
+    print(f"[Consolidator] Model: {GROQ_MODEL}")
     print(f"[Consolidator] Threshold: {SIMILARITY_THRESHOLD} | "
           f"Min cluster: {MIN_CLUSTER_SIZE}")
 
