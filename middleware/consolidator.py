@@ -76,7 +76,7 @@ def _groq_call(fn, *args, retries: int = 4, **kwargs):
 
 # ── ChromaDB — same collection as write and read paths ────────────────────────
 embed_fn     = embedding_functions.DefaultEmbeddingFunction()
-chroma_client = chromadb.PersistentClient(path=os.environ.get("CHROMA_DB_PATH", "./data/middleware_db"))
+chroma_client = chromadb.PersistentClient(path="./data/middleware_db")
 collection   = chroma_client.get_or_create_collection(
     name="living_memory",
     embedding_function=embed_fn,
