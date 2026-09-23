@@ -93,10 +93,8 @@ def respond(
     # ── Build short-term sliding window (last 6 turns = 12 messages) ─────────
     # This gives the LLM immediate context within the session
     # without relying on the vector DB for very recent messages
-    session_history = []
-    for human, assistant in chat_history[-6:]:
-        session_history.append({"role": "user",      "content": human})
-        session_history.append({"role": "assistant",  "content": assistant})
+    # Strip extra Gradio-specific fields (like 'metadata') to avoid API errors
+    session_history = [{"role": msg["role"], "content": msg["content"]} for msg in chat_history[-12:]]
 
     # ── Step 1: Read path — retrieve memories and get LLM reply ──────────────
     try:
@@ -135,7 +133,8 @@ def respond(
     maybe_consolidate()
 
     # ── Step 5: Update chat history ───────────────────────────────────────────
-    chat_history.append((user_message, reply))
+    chat_history.append({"role": "user",      "content": user_message})
+    chat_history.append({"role": "assistant", "content": reply})
 
     return chat_history, get_stats_text(), get_memory_log()
 
@@ -214,16 +213,11 @@ def get_memory_log() -> str:
 def build_ui():
     with gr.Blocks(
         title="Living Memory — AI Chatbot",
-        theme=gr.themes.Soft(),
-        css="""
-        .stats-box { font-size: 0.9em; }
-        footer { display: none !important; }
-        """
     ) as app:
 
         # ── Session ID — unique per browser tab ───────────────────────────────
-        # Stored as Gradio State so each tab has its own session
-        session_id = gr.State(value=lambda: str(uuid.uuid4()))
+        # Use a fixed session ID so memories persist across restarts and browser refreshes
+        session_id = gr.State(value="default_user")
 
         # ── Header ─────────────────────────────────────────────────────────────
         gr.Markdown("""
@@ -241,7 +235,6 @@ def build_ui():
                 chatbot = gr.Chatbot(
                     label="Conversation",
                     height=500,
-                    bubble_full_width=False,
                     show_label=True,
                 )
 
@@ -366,4 +359,9 @@ if __name__ == "__main__":
         server_port=7860,
         share=False,       # set True to get a public gradio.live link
         inbrowser=True,    # auto-opens browser
+        theme=gr.themes.Soft(),
+        css="""
+        .stats-box { font-size: 0.9em; }
+        footer { display: none !important; }
+        """
     )
